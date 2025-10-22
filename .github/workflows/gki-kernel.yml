@@ -53,6 +53,10 @@ on:
         required: true
         type: boolean
         default: true
+      set_defbbr:
+        required: true
+        type: boolean
+        default: true
 jobs:
   build-kernel-kernelsu-susfs:
     runs-on: ubuntu-latest
