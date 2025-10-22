@@ -45,6 +45,16 @@ on:
         required: true
         type: boolean
         default: true
+      BBG:
+        description: '是否启用内核层面阻止对关键分区/设备节点的非法写入(LSM)？'
+        required: true
+        type: boolean
+        default: true
+      set_defbbr:
+        description: '是否将BBR设为默认拥塞算法?（实验性）'
+        required: true
+        type: boolean
+        default: true
 jobs:
 
   build-kernel-a14-6-1:
