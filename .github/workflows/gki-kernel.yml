@@ -52,7 +52,7 @@ on:
       BBG:
         required: true
         type: boolean
-        default: false
+        default: true
 jobs:
   build-kernel-kernelsu-susfs:
     runs-on: ubuntu-latest
