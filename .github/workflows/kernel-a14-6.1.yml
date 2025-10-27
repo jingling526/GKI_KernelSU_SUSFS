@@ -42,6 +42,10 @@ on:
         required: true
         type: boolean
         default: true
+      build_time:
+        description: '设置内核构建时间(格式见仓库说明)'
+        required: false
+        type: string
 
 jobs:
   build-kernel-a14-6-1-kernelsu-susfs:
@@ -103,3 +107,4 @@ jobs:
       supp_op: ${{ inputs.supp_op || false }}
       BBG: ${{ inputs.BBG }}
       set_defbbr: ${{ inputs.set_defbbr }}
+      build_time: ${{ inputs.build_time || '' }}
