@@ -74,7 +74,10 @@ jobs:
             git clone https://github.com/tiann/KernelSU.git KernelSU
           elif [ "${{ inputs.kernelsu_variant }}" == "MKSU" ]; then
             echo "This is the Official"
-            git clone https://github.com/5ec1cff/KernelSU.git KernelSU    
+            git clone https://github.com/5ec1cff/KernelSU.git KernelSU
+          elif [ "${{ inputs.kernelsu_variant }}" == "Wild_KSU" ]; then
+            echo "This is the Official"
+            git clone https://github.com/WildKernels/Wild_KSU.git KernelSU
           else
             echo "Unknown variant"
           fi
@@ -114,6 +117,9 @@ jobs:
           elif [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
             echo "KSU..."
             REPO="tiann/KernelSU"
+          elif [ "${{ inputs.kernelsu_variant }}" == "Wild_KSU" ]; then
+            echo "Wild_KSU..."
+            REPO="WildKernels/Wild_KSU"
           fi
 
           FILENAME=$([[ "${{ inputs.kernelsu_variant }}" == "Next" ]] && echo "build-manager-ci.yml" || echo "build-manager.yml")
