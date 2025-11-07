@@ -74,10 +74,7 @@ jobs:
             git clone https://github.com/tiann/KernelSU.git KernelSU
           elif [ "${{ inputs.kernelsu_variant }}" == "MKSU" ]; then
             echo "This is the Official"
-            git clone https://github.com/5ec1cff/KernelSU.git KernelSU
-          elif [ "${{ inputs.kernelsu_variant }}" == "Wild_KSU" ]; then
-            echo "This is the Official"
-            git clone https://github.com/WildKernels/Wild_KSU.git KernelSU
+            git clone https://github.com/5ec1cff/KernelSU.git KernelSU    
           else
             echo "Unknown variant"
           fi
@@ -89,6 +86,11 @@ jobs:
           # 计算KSU版本号
           KSU_GIT_VERSION=$(git rev-list --count HEAD)
           KSU_VERSION=$((10000 + KSU_GIT_VERSION + VAR))
+          if [ "${{ inputs.kernelsu_variant }}" == "SukiSU" ]; then
+            KSU_VERSION=$((40000 + KSU_GIT_VERSION - 2815))
+          elif [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
+            KSU_VERSION=$((20000 + KSU_GIT_VERSION))
+          fi
           echo $KSU_VERSION
           echo "KSU_VERSION=$KSU_VERSION" >> $GITHUB_ENV
 
@@ -117,9 +119,6 @@ jobs:
           elif [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
             echo "KSU..."
             REPO="tiann/KernelSU"
-          elif [ "${{ inputs.kernelsu_variant }}" == "Wild_KSU" ]; then
-            echo "Wild_KSU..."
-            REPO="WildKernels/Wild_KSU"
           fi
 
           FILENAME=$([[ "${{ inputs.kernelsu_variant }}" == "Next" ]] && echo "build-manager-ci.yml" || echo "build-manager.yml")
