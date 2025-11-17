@@ -122,7 +122,7 @@ jobs:
           fi
 
           FILENAME=$([[ "${{ inputs.kernelsu_variant }}" == "Next" ]] && echo "build-manager-ci.yml" || echo "build-manager.yml")
-          KSUM=$([[ "${{ inputs.kernelsu_variant }}" == "Next" ]] && echo "Manager" || echo "manager")
+          KSUM="Manager"
           
           # 初始化
           NUMBER=0
