@@ -510,6 +510,13 @@ jobs:
           CONFIG_FILE="$CONFIG/common/arch/arm64/configs/gki_defconfig"
           echo "Changing to configuration directory: $CONFIG_FILE..."
           echo "CONFIG_DEFAULT_BBR=y" >> "$CONFIG_FILE"
+
+      - name: 设置Mountify
+        run: |
+          CONFIG_FILE="$CONFIG/common/arch/arm64/configs/gki_defconfig"
+          echo "Changing to configuration directory: $CONFIG_FILE..."
+          echo "CONFIG_OVERLAY_FS=y" >> "$CONFIG_FILE"
+          echo "CONFIG_TMPFS_XATTR=y" >> "$CONFIG_FILE"
            
       - name: 添加SUSFS配置设置
         run: |
